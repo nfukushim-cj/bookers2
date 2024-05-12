@@ -1,2 +1,15 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <h1>Welcome to <i class="fas fa-book"></i> <strong>Bookers</strong>!!</h1>
+      In Bookers,<br>
+      you can share and exchange your opinions, inpressions, and emotions<br>
+      about various books!
+    </div>
+    <div class="mx-auto">
+      <%= link_to 'Log in', new_user_session_path, class: "btn btn-primary" %>
+      <br>
+      <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

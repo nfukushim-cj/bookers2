@@ -1,1 +1,31 @@
-show
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h5>User info</h5>
+      <div>
+        <strong>
+          name
+        </strong>
+      </div>
+      <br>
+      <div>
+        <strong>
+          introduction
+        </strong>
+      </div>
+      <div>
+        <%= link_to "", edit_user_path(current_user.id), class: "btn btn-outline-secondary fa-solid fa-user-gear" %>
+      </div>
+    </div>
+    <div class="offset-md-1">
+
+    </div>
+    <div class="col-md-8">
+      <div>
+        <h5>Books</h5>
+      </div>
+
+
+    </div>
+  </div>
+</div>

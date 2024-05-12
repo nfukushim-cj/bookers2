@@ -8,38 +8,53 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/206590299a.js" crossorigin="anonymous"></script>
   </head>
 
-  <header>
-    <% if user_signed_in? %>
-      <li>
-         link_to 'Home', user_path
-      </li>
-      <li>
-        <%= link_to 'Users', users_path %>
-      </li>
-      <li>
-        <%= link_to 'Books', books_path %>
-      </li>
-       <li>
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to 'Home', root_path %>
-      </li>
-      <li>
-        <%= link_to 'About', home_about_path %>
-      </li>
-      <li>
-        <%= link_to 'Sign up', new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to 'Log in', new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
+  <div class="container">
+    <div class="row">
+      <header>
+        <% if user_signed_in? %>
+          <li>
+             <%= link_to 'Home', user_path(current_user.id) %>
+          </li>
+          <li>
+            <%= link_to 'Users', users_path %>
+          </li>
+          <li>
+            <%= link_to 'Books', books_path %>
+          </li>
+           <li>
+            <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to 'Home', root_path %>
+          </li>
+          <li>
+            <%= link_to 'About', home_about_path %>
+          </li>
+          <li>
+            <%= link_to 'Sign up', new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to 'Log in', new_user_session_path %>
+          </li>
+        <% end %>
+      </header>
+    </div>
+  </div>
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto">
+          CopyRight Infratop.inc
+        </div>
+      </div>
+    </div>
+  </footer>
 </html>
