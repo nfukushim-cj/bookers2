@@ -10,33 +10,33 @@
   <div class="row">
     <div class="col-md-3">
       <%= form_with model: @user do |user| %>
-      <div class="title">
-        <h2>User info</h2>
-      </div>
-      <div>
-        <% if @user.profile_image.attached? %>
-          <%= image_tag @user.profile_image, size: "70x70" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "70x70" %>
-        <% end %>
-      </div>
-      <table class="table">
-        <thread>
-          <tr>
-            <th>name</th>
-            <td><%= @user.name %></td>
-          </tr>
-        </thread>
-        <tbody>
-          <tr>
-            <th>introduction</th>
-            <td><%= @user.introduction %></td>
-          </tr>
-        </tbody>
-      </table>
-      <div>
-        <%= link_to "", edit_user_path(@user.id), class: "btn btn-outline-secondary fa-solid fa-user-gear col-md-12" %>
-      </div>
+        <div class="title">
+          <h2>User info</h2>
+        </div>
+        <div>
+          <% if @user.profile_image.attached? %>
+            <%= image_tag @user.profile_image, size: "70x70" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "70x70" %>
+          <% end %>
+        </div>
+        <table class="table">
+          <thread>
+            <tr>
+              <th>name</th>
+              <td><%= @user.name %></td>
+            </tr>
+          </thread>
+          <tbody>
+            <tr>
+              <th>introduction</th>
+              <td><%= @user.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <%= link_to "", edit_user_path(@user.id), class: "btn btn-outline-secondary fa-solid fa-user-gear col-md-12" %>
+        </div>
       <% end %>
       <%= form_with model: @book do |f| %>
         <div class="title">
@@ -55,39 +55,37 @@
         </div>
       <% end %>
     </div>
-    <div class = "offset-md-1">
-    </div>
-    <div class = "col-mad-8">
+    <div class = "col-md-8 offset-md-1">
       <div class="title">
         <h2>Book detail</h2>
       </div>
       <%= form_with model: @books do |f| %>
-      <table class="table table-main">
-        <tbody>
-          <tr>
-            <td>
-              <div>
-                <% if @books.user.profile_image.attached? %>
-                  <%= image_tag @books.user.profile_image, size: "50x50" %>
-                <% else %>
-                  <%= image_tag 'no_image', size: "50x50" %>
-                <% end %>
-              </div>
-              <div>
-                <%= link_to @books.user.name, user_path(@books.user_id) %>
-              </div>
-            </td>
-            <td><%= link_to @books.title, book_path(@books.id) %></td>
-            <td><%= @books.body %></td>
-            <% if @books.user_id == current_user.id %>
+        <table class="table table-main">
+          <tbody>
+            <tr>
               <td>
-                <%= link_to "Edit", edit_book_path(@books.id), class: "btn btn-success" %>
-                <%= link_to "Destroy", book_path(@books.id), class: "btn btn-danger", method: :delete %>
+                <div>
+                  <% if @books.user.profile_image.attached? %>
+                    <%= image_tag @books.user.profile_image, size: "50x50" %>
+                  <% else %>
+                    <%= image_tag 'no_image', size: "50x50" %>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to @books.user.name, user_path(@books.user_id) %>
+                </div>
               </td>
-            <% end %>
-          </tr>
-        </tbody>
-      </table>
+              <td><%= link_to @books.title, book_path(@books.id) %></td>
+              <td><%= @books.body %></td>
+              <% if @books.user_id == current_user.id %>
+                <td>
+                  <%= link_to "Edit", edit_book_path(@books.id), class: "btn btn-success" %>
+                  <%= link_to "Destroy", book_path(@books.id), class: "btn btn-danger", method: :delete %>
+                </td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
       <% end %>
     </div>
   </div>
