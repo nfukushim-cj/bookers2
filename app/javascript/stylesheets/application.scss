@@ -1,1 +1,58 @@
 @use '~bootstrap/scss/bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-title{
+  color: white ;
+}
+
+
+.header-link{
+  text-decoration: none;
+  color: white ;
+}
+
+.btn-login{
+  background-color:#17A2B8;
+  color:white;
+}
+
+.btn-login:hover{
+  background-color:#138496;
+  color:white;
+}
+
+.btn-signup{
+  background-color:#28A745;
+  color:white;
+}
+
+.btn-signup:hover{
+  background-color:#218838;
+  color:white;
+}
+
+.userinfo{
+  font-weight: bold;
+}
+
+.title{
+  margin-top:10px;
+}
+
+.table-main{
+  width: 600px;
+}
+
+.form-element{
+   width: 100%;
+}
+
+.container-edit {
+  display: flex;
+  justify-content: center;
+}

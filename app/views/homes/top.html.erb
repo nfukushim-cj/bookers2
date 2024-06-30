@@ -1,15 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto">
-      <h1>Welcome to <i class="fas fa-book"></i> <strong>Bookers</strong>!!</h1>
-      In Bookers,<br>
-      you can share and exchange your opinions, inpressions, and emotions<br>
-      about various books!
-    </div>
-    <div class="mx-auto">
-      <%= link_to 'Log in', new_user_session_path, class: "btn btn-primary" %>
       <br>
-      <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
+      <h1>welcome to <i class="fas fa-book"></i> <strong>Bookers</strong>!!</h1>
+      <div>
+        In <i class="fas fa-book"></i><B>Bookers</B>,<br>
+        <br>
+        you can share and exchange your opinions, inpressions, and emotions<br>
+        <br>
+        about various books!
+        <br>
+      </div>
+      <br>
+      <div class="text-center">
+        <%= link_to 'Log in', new_user_session_path, class: "d-grid gap-2 col-10 btn btn-login" %>
+      </div>
+      <br>
+      <div class="text-center">
+        <%= link_to 'Sign up', new_user_registration_path, class: "d-grid gap-2 col-10 btn btn-signup" %>
+      </div>
     </div>
   </div>
 </div>

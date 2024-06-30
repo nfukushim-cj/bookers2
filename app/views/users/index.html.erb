@@ -1,1 +1,88 @@
-index
+<div class = "container">
+  <% if @book.errors.any? %>
+    <h5><%= @book.errors.count %> errors prohibited this obj from being saved:</h5>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="title">
+        <h2>User info</h2>
+      </div>
+      <%= form_with model: @user do |user| %>
+      <div>
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image, size: "70x70" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "70x70" %>
+        <% end %>
+      </div>
+      <table class="table">
+        <tbody class= "userinfo">
+          <tr>
+            <td>name</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>introduction</td>
+            <td><%= @user.introduction %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="btn-userinfo">
+        <%= link_to "", edit_user_path(current_user.id), class: "btn btn-outline-secondary fa-solid fa-user-gear col-md-12" %>
+      </div>
+      <% end %>
+      <%= form_with model: @book do |f| %>
+        <div class="title">
+          <h2>New book</h2>
+        </div>
+        <div class="field">
+          <p>title</p>
+          <%= f.text_field :title %>
+        </div>
+        <div class="field">
+          <p>Opinion</p>
+          <%= f.text_area :body %>
+        </div>
+        <div>
+          <%= f.submit "Create Book", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+    <div class = "offset-md-1">
+    </div>
+    <div class = "col-mad-8">
+      <div class="title">
+        <h2>Users</h2>
+      </div>
+      <table class="table table-main">
+        <thread>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thread>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+              <td>
+                <% if user.profile_image.attached? %>
+                  <%= image_tag user.profile_image, size: "50x50" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "50x50" %>
+                <% end %>
+              </td>
+              <td><%= user.name %></td>
+              <td><%= link_to "Show", user_path(user.id) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

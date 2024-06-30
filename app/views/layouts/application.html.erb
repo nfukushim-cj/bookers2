@@ -5,56 +5,81 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/206590299a.js" crossorigin="anonymous"></script>
   </head>
-
-  <div class="container">
-    <div class="row">
-      <header>
-        <% if user_signed_in? %>
-          <li>
-             <%= link_to 'Home', user_path(current_user.id) %>
-          </li>
-          <li>
-            <%= link_to 'Users', users_path %>
-          </li>
-          <li>
-            <%= link_to 'Books', books_path %>
-          </li>
-           <li>
-            <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to 'Home', root_path %>
-          </li>
-          <li>
-            <%= link_to 'About', home_about_path %>
-          </li>
-          <li>
-            <%= link_to 'Sign up', new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to 'Log in', new_user_session_path %>
-          </li>
-        <% end %>
-      </header>
-    </div>
-  </div>
+  <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="header-title">
+        <%= link_to "Bookers", root_path, class: 'nav-link text-white' %>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to user_path(current_user.id), class: 'nav-link text-white' do %>
+              <i class="fa-solid fa-house" style="color: #fefefe;"></i> Home
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to users_path, class: 'nav-link text-white' do %>
+                <i class="fa-solid fa-users" style="color: #ffffff;"></i> Users
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to books_path, class: 'nav-link text-white' do %>
+              <i class="fa-solid fa-book-open" style="color: #ffffff;"></i> Books
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white' do %>
+              <i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Log out
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to root_path, class: 'nav-link text-white' do %>
+                <i class="fa-solid fa-house" style="color: #fefefe;"></i> Home
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to home_about_path, class: 'nav-link text-white' do %>
+                <i class="fa-solid fa-link" style="color: #fafafa;"></i> About
+              <% end %>
+            </li>
+            <li class="nav-item">
+                <%= link_to new_user_registration_path, class: 'nav-link text-white' do %>
+                <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i> Sign up
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_session_path, class: 'nav-link text-white' do %>
+                <i class="fa-solid fa-right-to-bracket" style="color: #ffffff;"></i> Log in
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  </header>
   <body>
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
   </body>
 
   <footer>
-    <div class="container">
-      <div class="row">
+      <div class = "row">
         <div class="mx-auto">
           CopyRight Infratop.inc
         </div>
       </div>
-    </div>
   </footer>
 </html>

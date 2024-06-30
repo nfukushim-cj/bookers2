@@ -1,0 +1,37 @@
+<div class = "container container-edit">
+  <div>
+    <div class="title">
+      <h2>Editing Book</h2>
+    </div>
+    <% if @book.errors.any? %>
+      <h5><%= @book.errors.count %> errors prohibited this obj from being saved:</h5>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= form_with model: @book, method: :put do |f| %>
+    <div>
+      <p>Title</p>
+    </div>
+    <div>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <p>Opinion</p>
+    </div>
+    <div>
+      <%= f.text_area :body %>
+    </div>
+    <div>
+      <%= f.submit "Update Book", class: "btn btn-success" %>
+    </div>
+    <div>
+       <%= link_to "Show", book_path(@book.id) %>
+       |
+       <%= link_to "Back", books_path %>
+  　</div>
+  <% end %>
+  </div>
+</div>

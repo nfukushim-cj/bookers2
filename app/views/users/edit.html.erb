@@ -1,0 +1,32 @@
+<div class = "container container-edit">
+  <div class="child">
+      <div>
+        <h2>User info</h2>
+      </div>
+      <% if @user.errors.any? %>
+        <h5><%= @user.errors.count %> errors prohibited this obj from being saved:</h5>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <%= form_with model: @user, method: :put do |f| %>
+      <div class="field">
+        <p>Name</p>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <p>Image</p>
+        <%= f.file_field :profile_image %>
+      </div>
+      <div class="field">
+        <p>Introduction</p>
+        <%= f.text_area :introduction %>
+      </div>
+      <div>
+        <%= f.submit "Update User", class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
